@@ -16,12 +16,12 @@ pacman -S base base-devel git xfce kdebase-workspace cairo-dock cairo-dock-plugi
 rm -rf /tmp/git
 mkdir -p /tmp/git
 cd /tmp/git
-git clone 
 git clone https://github.com/edge226/configs.git
+cd configs
 git branch desktop
 git checkout desktop
 git pull origin desktop
-cd configs/celme
+cd celme
 chown -R root:root usr
 rsync -rqplH usr /
 rsync -rqplH etc/skel/ ~/
