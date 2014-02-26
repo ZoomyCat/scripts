@@ -1,0 +1,28 @@
+#!/bin/bash
+
+## cel-convert will conver any running (manjaro atm) machine to one that runs xfce
+## with kwin and cairo dock using some fancy configs. This is done by downloading
+## all programs required to have a nice working setup with the package manager.
+## This comes by default with base, base-devel and git. It does not modify currently
+## installed versions of what you had installed before. It will only Download and not
+## perform removals at this time.
+## This changes some desktop files so they will work with this spin, This means it may
+## break functionality while running each of the seperate desktop environments.
+
+## this is not completed code. Use at your own risk. This will probably work with manjaro :)
+
+pacman -S base base-devel git xfce kdebase-workspace cairo-dock cairo-dock-plugins
+
+rm -rf /tmp/git
+mkdir -p /tmp/git
+cd /tmp/git
+git clone 
+git clone https://github.com/edge226/configs.git
+git branch desktop
+git checkout desktop
+git pull origin desktop
+cd configs/celme
+chown -R root:root usr
+rsync -rqplH usr /
+rsync -rqplH etc/skel/ ~/
+rm -rf /tmp/git
