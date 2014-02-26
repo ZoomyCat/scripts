@@ -8,6 +8,11 @@
 ## perform removals at this time.
 ## This changes some desktop files so they will work with this spin, This means it may
 ## break functionality while running each of the seperate desktop environments.
+## current functionality is irreversible.
+
+## will only break the home drive if anything, you can always replace from /etc/skel since I
+## leave that area clean. It will still break the menu. May add an add/remove feature that
+## backs up the old stuff for if the user did not like it.
 
 ## this is not completed code. Use at your own risk. This will probably work with manjaro :)
 
