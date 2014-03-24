@@ -30,12 +30,9 @@ chroot /mnt/gentoo /bin/bash
 #Unmount devices.
 
 cd
-echo "Unmounting System Devices."
+echo "Unmounting Devices."
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -l /mnt/gentoo{/boot,/proc,}
 echo "Done."
 
-echo "Done."echo "Unmounting Guest Operating System."
-umount /mnt/gentoo/boot
-umount /mnt/gentoo/
 echo "Returned to Host System Successfully!"
