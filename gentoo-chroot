@@ -1,0 +1,41 @@
+#!/bin/bash
+#Written by Edge226.
+
+#Mount Guest Linux Partitions
+
+echo "Mounting Guest Operating System."
+swapon /dev/vda2
+mount /dev/vda3 /mnt/gentoo
+mkdir -p /mnt/gentoo/boot
+mount /dev/vda1 /mnt/gentoo/boot
+
+#Mount Operating system devices.
+
+echo "Mounting System Devices."
+mount -t proc proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+
+#Enable Network Access.
+
+echo "Enabling Network Access."
+cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
+
+#Enter the Chroot Environment.
+
+echo "Entering the chroot environment."
+chroot /mnt/gentoo /bin/bash
+
+#Clean up after exiting the environment.
+#Unmount devices.
+
+cd
+echo "Unmounting System Devices."
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -l /mnt/gentoo{/boot,/proc,}
+echo "Done."
+
+echo "Done."echo "Unmounting Guest Operating System."
+umount /mnt/gentoo/boot
+umount /mnt/gentoo/
+echo "Returned to Host System Successfully!"
