@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+name=manjaro-cuttingedgelinux
+version=xfce-kwin-0.8.6
+checksums=(); for arch in i686 x86_64; do for checksum in sha256sum shasum md5sum; do checksums+=( "$arch" "$checksum" "$("$checksum" "$name-$version-$arch.iso")" ); done; done; printf 'Performing checksum of arch %s method %s yielded result %s\n' "${checksums[@]}">$name-$version-checksums.txt
